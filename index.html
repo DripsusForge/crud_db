@@ -36,7 +36,6 @@
     <ul id="lista-usuarios"></ul>
 
     <script>
-        // URL en vivo de tu servidor en Render 🚀
         const URL_API = "https://crud-backend-w7m8.onrender.com/usuarios"; 
         
         const form = document.getElementById('usuario-form');
@@ -47,10 +46,8 @@
         const formTitle = document.getElementById('form-title');
         const btnGuardar = document.getElementById('btn-guardar');
 
-        // Cargar usuarios al iniciar
         document.addEventListener('DOMContentLoaded', obtenerUsuarios);
 
-        // Obtener usuarios (GET)
         async function obtenerUsuarios() {
             try {
                 const res = await fetch(URL_API);
@@ -72,7 +69,6 @@
             }
         }
 
-        // Crear o Editar Usuario (POST o PUT)
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
             const id = usuarioIdInput.value;
@@ -80,14 +76,12 @@
 
             try {
                 if (id) {
-                    // Si hay ID, estamos editando (PUT)
                     await fetch(`${URL_API}/${id}`, {
                         method: 'PUT',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(datos)
                     });
                 } else {
-                    // Si no hay ID, estamos creando (POST)
                     await fetch(URL_API, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
@@ -102,7 +96,6 @@
             }
         });
 
-        // Eliminar Usuario (DELETE)
         async function eliminarUsuario(id) {
             if (confirm("¿Seguro que deseas eliminar este usuario?")) {
                 try {
@@ -114,7 +107,6 @@
             }
         }
 
-        // Cargar datos en el formulario para editar
         function prepararEditar(id, nombre, email) {
             usuarioIdInput.value = id;
             nombreInput.value = nombre;
