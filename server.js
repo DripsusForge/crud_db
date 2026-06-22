@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-require('dotenv').config(); // 👈 Primero cargamos las variables de entorno
+require('dotenv').config(); 
 const { Pool } = require('pg');
 
 const app = express();
@@ -41,9 +41,7 @@ const initDb = async () => {
 };
 initDb();
 
-// ==========================================
-// RUTAS CRUD (Backend)
-// ==========================================
+
 
 // 1. LEER (GET) - Obtener todos los usuarios
 app.get('/usuarios', async (req, res) => {
